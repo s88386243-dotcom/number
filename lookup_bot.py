@@ -1,6 +1,8 @@
 import telebot
 import requests
 from telebot import types
+from flask import Flask
+import threading
 
 BOT_TOKEN = "8868163699:AAFJo1kIbDvdMcDKsv3g06yav2FNAkaJLXk"
 ADMIN_ID = 7166502503   # ✅ Sandesh का Telegram User ID
@@ -143,5 +145,21 @@ def lookup_aadhar(message):
     except Exception as e:
         bot.send_message(message.chat.id, f"⚠️ API Error: {str(e)}")
 
-print("🤖 Bot is running...")
-bot.polling()
+# ===== Flask dummy server =====
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is running!"
+
+def run_flask():
+    app.run(host="0.0.0.0", port=10000)
+
+# ===== Bot polling in thread =====
+def run_bot():
+    print("🤖 Bot is running...")
+    bot.polling()
+
+if __name__ == "__main__":
+    threading.Thread(target=run_bot).start()
+    run_flask()
