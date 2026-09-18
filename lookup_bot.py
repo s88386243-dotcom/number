@@ -4,7 +4,7 @@ from telebot import types
 from flask import Flask
 import threading
 
-BOT_TOKEN = "8868163699:AAFJo1kIbDvdMcDKsv3g06yav2FNAkaJLXk"
+BOT_TOKEN = "8868163699:AAFsIi2bhJAfHZordVWURKhvvhpNZ_ZgIqQ"
 ADMIN_ID = 7166502503   # ✅ Sandesh का Telegram User ID
 
 PHONE_API = "https://ansh-apis.is-dev.org/api/new"
